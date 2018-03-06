@@ -4,11 +4,9 @@
   echo "deb https://download.gocd.io /" | tee /etc/apt/sources.list.d/gocd.list
   curl -# https://download.gocd.io/GOCD-GPG-KEY.asc | apt-key add -
   apt-get update
-
   # Install and set up GoCD server, agents and requirements
   apt-get install -y openjdk-8-jre git
   apt-get install -y go-server go-agent
-
   # Add more GoCD agents
   if [ ! -f /etc/init.d/go-agent-2 ]; then
     echo "Installing agent 2"
@@ -46,5 +44,8 @@
   /etc/init.d/go-agent-2 start
   /etc/init.d/go-agent-3 start
 
+  curl -sL https://deb.nodesource.com/setup_6.x | bash -
+  apt-get install -y nodejs
+  echo "alias node='nodejs'" > /var/go/.bashrc
   # Remove packages no longer needed
   apt-get -y autoremove
