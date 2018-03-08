@@ -44,8 +44,13 @@
   /etc/init.d/go-agent-2 start
   /etc/init.d/go-agent-3 start
 
-  curl -sL https://deb.nodesource.com/setup_6.x | bash -
+  curl -sL https://deb.nodesource.com/setup_8.x | bash -
   apt-get install -y nodejs
   echo "alias node='nodejs'" > /var/go/.bashrc
+
+  sudo apt-key adv --keyserver hkp://pool.sks-keyservers.net --recv-keys 023EDB0B
+  echo deb https://dl.bintray.com/gauge/gauge-deb stable main | sudo tee -a /etc/apt/sources.list
+  sudo apt-get update
+  apt-get install -y gauge chromium-browser 
   # Remove packages no longer needed
   apt-get -y autoremove
