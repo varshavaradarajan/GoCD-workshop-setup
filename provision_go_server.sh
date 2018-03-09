@@ -51,6 +51,6 @@
   sudo apt-key adv --keyserver hkp://pool.sks-keyservers.net --recv-keys 023EDB0B
   echo deb https://dl.bintray.com/gauge/gauge-deb stable main | sudo tee -a /etc/apt/sources.list
   sudo apt-get update
-  apt-get install -y gauge chromium-browser 
+  apt-get install -y gauge chromium-browser libgconf-2-4 
   # Remove packages no longer needed
   apt-get -y autoremove
